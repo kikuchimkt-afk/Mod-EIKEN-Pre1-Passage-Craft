@@ -1,0 +1,1247 @@
+import React, { useState } from 'react';
+import { BookOpen, FileText, BarChart2, Info, CheckCircle, ChevronDown, AlignLeft, 
+HelpCircle, ArrowRight, Layers, X, Shield, Book, Code } from 'lucide-react';
+
+const EikenApp = () => {
+  const [selectedYear, setSelectedYear] = useState('2023-3-2');
+  const [leftTab, setLeftTab] = useState('orig-text');
+  const [rightTab, setRightTab] = useState('intent');
+  const [showPolicyModal, setShowPolicyModal] = useState(false);
+
+  // データストア
+  const examData = {
+    '2025-2': {
+      title: "2025年度 第2回 準1級",
+      theme: "History / Minority (Pattern A-01)",
+      past: {
+        title: "Rocket Science",
+        text: `The word "computer" today usually brings to mind a complex electronic 
+device, but originally it referred to a job title for a person who performed calculations. In 
+the United States, the early aeronautics industry relied on human workers to process the 
+data required for testing new aircraft designs. A large number of these workers were 
+women. These women, who came to be called human computers, conducted the math 
+necessary to analyze data from wind tunnel tests. Without them, it would have been 
+impossible for engineers to improve the designs of American warplanes.
+
+However, partly due to the discriminatory nature of contemporary societal norms, 
+employing women meant that government agencies could pay them significantly less 
+than men for doing the same work. The work was often seen as "rote" and de-skilled, 
+comparable to filing or typing. This was a severe misunderstanding of the nature of the 
+work. In reality, the job required an advanced understanding of mathematics. Despite 
+their skills, these women faced significant barriers. African American women, in 
+particular, were forced to work in segregated facilities, separate from their white 
+counterparts.
+
+The launch of the Soviet satellite Sputnik in 1957 changed everything. The Space Race 
+began, and the U.S. government agency NACA (which later became NASA) needed the 
+best minds available. This urgency led to the gradual dismantling of segregation policies. 
+When NASA was formed in 1958, it abolished that policy and also improved other 
+conditions. African American women were integrated into the workforce, working 
+alongside white colleagues to help put a human into space.
+
+By the early 1960s, electronic computers were becoming more reliable and began to 
+replace human computers. Unlike the astronauts, who were celebrated heroes, these 
+women worked in obscurity. During the transition, however, astronauts like John Glenn 
+famously asked for the human computers to verify the electronic computers' calculations 
+before his orbital flight. Time, however, was not on their side. Electronic computers 
+eventually took over completely. Nevertheless, the women were standing on the 
+shoulders of others who had gone before them, paving the way for future generations of 
+women in science.`,
+        structureJp: `この文章は、米国の宇宙開発史における「計算手（ヒューマン・コ
+ンピュータ）」として知られる女性数学者たちの役割について論じています。
+
+【第1段落：導入】
+初期の航空学や宇宙ミッションにおいて、極めて重要でありながら見過ごされがちだっ
+た「女性」の役割について。電子計算機が登場する前は、人間が手作業で計算を行って
+いました。
+
+【第2段落：歴史的背景】
+なぜ女性が雇われたのか（戦時の労働力不足、男性より低い賃金）。その仕事は「機械
+的（rote）」で単純なものと見なされていましたが、実際には高度な数学的知能を必要
+としました。
+
+【第3段落：宇宙開発競争への移行】
+NACA（後のNASA）における隔離（ウェスト・コンピュータ）の状況。スプートニク
+ショックと宇宙開発競争の緊急性が、いかにして人種や性別の障壁の一部を崩し始めた
+か（差別は残ったものの、実力主義が優先された）。
+
+【第4段落：結論】
+電子計算機への移行と、彼女たちのレガシー。機械よりも信頼された事例（ジョン・グ
+レンの逸話など）と、彼女たちが後続の女性科学者のために切り開いた道について。`,
+        questions: [
+          {
+            id: 25,
+            text: "What does the author suggest about the women mentioned in the 
+passage?",
+            options: [
+              "They were primarily hired because they had military experience.",
+              "They were initially reluctant to work for the government.",
+              "Their contributions were long ignored despite being essential.",
+              "They preferred electronic computers over manual calculation."
+            ],
+            answer: 3
+          },
+          {
+            id: 26,
+            text: "What was a common misconception about the work these women 
+performed?",
+            options: [
+              "It was seen as simple and repetitive, requiring little skill.",
+              "It was considered too dangerous for women to undertake.",
+              "It was believed to be more accurate than electronic computers.",
+              "It was thought to be a temporary job only for wartime."
+            ],
+            answer: 1
+          },
+          {
+            id: 27,
+            text: "How did the situation change with the establishment of NASA?",
+            options: [
+              "Segregation was immediately abolished in all sectors.",
+              "Some discriminatory practices were removed to improve efficiency.",
+              "Women were no longer allowed to work on important missions.",
+              "The use of human computers was completely stopped."
+            ],
+            answer: 2
+          }
+        ]
+      },
+      original: {
+        title: "The Hidden Calculators",
+        text: `Long before the hum of electronic servers filled office spaces, the term 
+"computer" referred not to a machine, but to a person. In the mid-20th century, as the 
+United States raced to conquer the skies and eventually space, a group of extraordinary 
+women worked behind the scenes to make it possible. These female mathematicians 
+were tasked with processing the complex data required for aerodynamic research. 
+Without their precise hand-calculations, the engineering feats of the era would have 
+been impossible. Yet, for decades, their critical contributions remained largely invisible 
+to the public eye.
+
+During the 1940s and 50s, the demand for processing aeronautical data surged. Federal 
+agencies turned to hiring women, partly because they could be paid significantly less 
+than men for the same work. At the time, this calculation work was often dismissed as 
+tedious and "rote," similar to typing or filing. However, this characterization was a severe 
+misunderstanding of the nature of the job. In reality, the work demanded an advanced 
+understanding of analytics and geometry. Despite their intellectual capabilities, these 
+women often faced a double burden: the societal limitations placed on their gender and, 
+for many, the harsh realities of racial segregation.
+
+The launch of the Soviet satellite Sputnik in 1957 marked a turning point. The urgency 
+of the Space Race forced the United States to prioritize talent over tradition. As the 
+National Advisory Committee for Aeronautics (NACA) transformed into NASA, the 
+need for the absolute best minds led to a gradual dismantling of some discriminatory 
+barriers. Segregated working facilities, which had kept African American female 
+mathematicians separate from their white counterparts, began to be abolished. It was a 
+pragmatic decision; the race for space simply did not have room for the inefficiencies of 
+prejudice.
+
+By the time John Glenn orbited the Earth in 1962, electronic computers were beginning 
+to take over. However, the astronauts famously trusted the human computers more than 
+the new machines, asking for the numbers to be verified by hand. While technology 
+eventually replaced their roles, the legacy of these women endures. They not only 
+propelled humanity into space but also broke through the atmospheric pressure of social 
+inequality, proving that intelligence has no gender or race.`,
+        questions: [
+          {
+            id: 1,
+            text: "What is the main point made about the female mathematicians in the 
+first paragraph?",
+            options: [
+              "They were replaced by machines earlier than expected.",
+              "They were famously known as 'servers' in the office.",
+              "Their work was vital but unappreciated for a long time.",
+              "They refused to work on aerodynamic research."
+            ],
+            answer: 3,
+            explanation: "Para 1 states: 'Without their precise hand-calculations... 
+impossible. Yet... contributions remained largely invisible.' -> Matches 'vital but 
+unappreciated'."
+          },
+          {
+            id: 2,
+            text: "Why does the author mention that the work was dismissed as 'rote'?",
+            options: [
+              "To show that the women were not qualified for the job.",
+              "To highlight the misconception about the difficulty of their tasks.",
+              "To explain why men preferred to do the work themselves.",
+              "To suggest that the government paid them fair wages."
+            ],
+            answer: 2,
+            explanation: "Para 2 states: 'dismissed as tedious and rote... However, this 
+characterization was a severe misunderstanding... work demanded an advanced 
+understanding.' -> Matches 'highlight the misconception'."
+          },
+          {
+            id: 3,
+            text: "What led to changes in the working conditions at NASA?",
+            options: [
+              "The need for efficiency in the Space Race outweighed prejudice.",
+              "New laws were passed that strictly forbade all segregation.",
+              "Electronic computers required a different office layout.",
+              "The female employees went on strike for better pay."
+            ],
+            answer: 1,
+            explanation: "Para 3 states: 'urgency of the Space Race... prioritize talent... 
+race for space simply did not have room for the inefficiencies of prejudice.' -> Matches 
+'need for efficiency... outweighed prejudice'."
+          }
+        ]
+      },
+      analysis: {
+        intent: (
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 border-b pb-2 mb-2">作
+成意図：Pattern A-01 (歴史・マイノリティ)</h3>
+              <p className="text-gray-700 leading-relaxed">
+                このオリジナル問題「The Hidden Calculators」は、2025年第2回の
+「Rocket Science」と同じ<span className="font-bold text-blue-700">「マイノリティ
+の貢献と名誉回復」</span>のテンプレートに基づいて作成されました。
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-800 mb-1">1. テーマの継承</h4>
+              <p className="text-gray-700 leading-relaxed">元問題と同様に、「NASA
+（旧NACA）における女性計算手（Human Computers）」を扱っています。</p>
+            </div>
+          </div>
+        ),
+        comparisonData: [
+          { label: "語数", past: "約 376 words", original: "約 365 words" },
+          { label: "CEFR", past: "B2 - C1", original: "B2 - C1" },
+          { label: "文構造", past: "入れ子構造多め", original: "分詞構文・関係詞を多用" },
+          { label: "設問1", past: "導入部 (Unsung Heroes)", original: "導入部 (Vital but 
+unappreciated)" },
+          { label: "設問2", past: "誤解 (Rote work)", original: "誤解 (Misconception 
+about difficulty)" },
+          { label: "設問3", past: "NASA設立後の変化", original: "NASA設立後の変化 
+(Efficiency over prejudice)" }
+        ],
+        comparisonNotes: (
+          <div className="space-y-2">
+            <h4 className="font-bold text-blue-900">難易度調整のポイント</h4>
+            <p className="text-blue-800 leading-relaxed">
+              オリジナル版では、<span className="font-bold bg-blue-100 px-1 
+rounded">"pragmatic decision"（実利的な判断）</span>や<span className="font-bold 
+bg-blue-100 px-1 rounded">"dismantling"（解体）</span>といった準1級ターゲット
+語彙を使用し、本番同等の読み応えを実現しました。
+            </p>
+          </div>
+        ),
+        syntaxPoints: [
+          {
+            id: 1,
+            title: "相関接続詞 (not A, but B)",
+            sentence: `Long before the hum of electronic servers filled office spaces, the 
+term "computer" referred **not to a machine, but to a person**.`,
+            explanation: `「not A but B（AではなくB）」の構文です。ここでは前置詞 to 
+を伴って、"not to a machine" と "but to a person" が並列されています。「機械のこと
+ではなく、人のことを指していた」という意味を素早く掴むのがポイントです。`
+          },
+          {
+            id: 2,
+            title: "理由を表す副詞句の挿入",
+            sentence: `Federal agencies turned to hiring women, **partly because they 
+could be paid significantly less than men for the same work**.`,
+            explanation: `カンマの後に "partly because..."（一部には?という理由で）を
+続けることで、主節の動作（女性を雇った）の背景理由を補足的に説明しています。文
+を一度切らずに、情報を付け足していく準1級らしい書き方です。`
+          },
+          {
+            id: 3,
+            title: "譲歩の前置詞 (Despite)",
+            sentence: `**Despite their intellectual capabilities**, these women often faced 
+a double burden: the societal limitations...`,
+            explanation: `Despite は前置詞なので、後ろには名詞句（their intellectual 
+capabilities）が続きます。「知的能力が高かったにもかかわらず」という意味です。直後
+にコロン（:）を使って、"double burden" の内容を具体的に列挙する流れも重要です。
+`
+          }
+        ]
+      }
+    },
+    '2025-1': {
+      title: "2025年度 第1回 準1級",
+      theme: "History Mystery / Scientific Solution (Pattern A-02)",
+      past: {
+        title: "The Mary Celeste",
+        text: `In December 1872, the crew of the Dei Gratia, a British merchant ship that 
+had set sail from New York, spotted another ship drifting in the Atlantic Ocean. Upon 
+closer inspection, the captain realized it was the Mary Celeste, which should have 
+already arrived at its destination in Italy. A boarding party was sent to investigate, but 
+they found the ship deserted. However, the ship was in seaworthy condition, with plenty 
+of food and water, and the crew's personal items were undisturbed. The cargo of 
+industrial alcohol was largely intact, though there was some water in the hold. Hoping to 
+gain a financial reward for salvaging the deserted ship, the Dei Gratia’s crew sailed the 
+Mary Celeste to Gibraltar.
+
+Since that day, the fate of the people on board has remained a mystery. Ideally, it was 
+thought that pirates might have killed the crew, but this is doubtful because the British 
+navy was active in that region, making it a poor location for such criminal activities. 
+Additionally, valuable goods on board had not been taken. Another hypothesis suggested 
+that fumes from the alcohol cargo might have caused a small explosion, scaring the 
+captain into ordering an evacuation. However, the sailors who found the ship reported 
+no signs of fire or explosion damage, which weakens this argument.
+
+In an attempt to solve the case, modern researchers have re-examined the original 
+documents and logs. One investigator, Anne MacGregor, concluded that the ship was 
+likely abandoned days before it was found, near the island of Santa Maria. She 
+discovered records indicating that the ship’s chronometer?a device crucial for 
+calculating location?was broken, and a pump used to remove water was clogged with 
+debris. Consequently, the captain would have been unable to determine his exact 
+location or tell how much water was leaking into the ship. MacGregor argues that these 
+technical failures, likely worsened by a storm, would have been enough to make the 
+captain resort to sacrificing the ship in order to ensure his crew's safety.`,
+        structureJp: `この文章は、マリー・セレスト号の謎とその科学的な解明について
+論じています。
+
+【第1段落：発見】
+1872年、イギリス船デイ・グラティア号がマリー・セレスト号が漂流しているのを発
+見。乗船してみると無人だったが、船は航行可能な状態で、食料や個人の所有物も残っ
+ていた。発見者たちは報奨金（サルベージ）目当てで船をジブラルタルへ運んだ。
+
+【第2段落：過去の仮説とその否定】
+乗組員消失に関する様々な説。
+・海賊説？ → 英国海軍の監視が厳しく、金品も残っていたため可能性は低い。
+・アルコールガスの爆発説？ → 火災や爆発の痕跡がなかったため否定される。
+
+【第3段落：現代の調査と結論】
+アン・マクレガーによる最新の調査。航海日誌の再検証により、機器の故障（クロノメ
+ーターの破損、ポンプの詰まり）が判明。船長は位置も浸水量も分からず、悪天候の中
+でパニックに陥り、「沈没する」と誤解して船を放棄したという結論。`,
+        questions: [
+          {
+            id: 25,
+            text: "Why did the crew of the Dei Gratia take the Mary Celeste to 
+Gibraltar?",
+            options: [
+              "They wanted to claim the cargo for themselves.",
+              "They were ordered to do so by the British navy.",
+              "They hoped to receive a large amount of money for saving it.",
+              "They needed a spare ship because theirs was damaged."
+            ],
+            answer: 3
+          },
+          {
+            id: 26,
+            text: "Why is the theory about pirates considered unlikely?",
+            options: [
+              "Pirates were not active in that part of the ocean.",
+              "The British navy had a strong presence in the area.",
+              "The ship was not carrying anything valuable.",
+              "There were clear signs of a struggle on board."
+            ],
+            answer: 2
+          },
+          {
+            id: 27,
+            text: "What does Anne MacGregor believe caused the captain to abandon the 
+ship?",
+            options: [
+              "He mistakenly believed the ship was about to sink.",
+              "He was threatened by a mutiny among the crew.",
+              "A fire had broken out in the cargo hold.",
+              "He ran out of food and water."
+            ],
+            answer: 1
+          }
+        ]
+      },
+      original: {
+        title: "The Atlantic Enigma",
+        text: `Late in 1872, sailors aboard the Dei Gratia, a ship traveling from New York 
+to Europe, noticed another vessel moving strangely in the Atlantic Ocean. Upon closer 
+inspection, the captain realized it was the Mary Celeste, a ship that should have already 
+reached its destination in Italy. A boarding party was sent to investigate, but they found 
+the ship completely deserted. Despite the absence of the crew, the ship itself was in 
+seaworthy condition. There was plenty of food and water, and the personal items of the 
+crew were undisturbed. The cargo, consisting of barrels of industrial alcohol, was mostly 
+intact, although there was some water in the bottom of the ship. Driven by the prospect 
+of earning a substantial payment for recovering the lost vessel, the men of the Dei Gratia 
+sailed the Mary Celeste to Gibraltar.
+
+Since that day, the fate of the people on board has remained one of maritime history’s 
+greatest puzzles. Over the years, many explanations have been proposed. Ideally, it was 
+thought that sea robbers might have killed the crew, but this is doubtful because the 
+British navy was active in that region, making it a poor location for such criminal 
+activities. Additionally, valuable goods on board had not been taken. Another hypothesis 
+suggested that fumes from the alcohol cargo might have caused a small explosion, 
+scaring the captain into ordering an evacuation. However, the sailors who found the ship 
+reported no signs of fire or explosion damage, which weakens this argument.
+
+In an attempt to solve the case, modern researchers have re-examined the original 
+documents and logs. One investigator, Anne MacGregor, concluded that the ship was 
+likely abandoned days before it was found, near the island of Santa Maria. She 
+discovered records indicating that the ship’s chronometer?a device crucial for 
+calculating location?was broken, and a pump used to remove water was clogged with 
+debris. Consequently, the captain would have been unable to determine his exact 
+location or tell how much water was leaking into the ship. MacGregor argues that these 
+technical failures, likely worsened by a storm, caused the captain to panic and order his 
+crew to leave the ship in a small boat, believing the Mary Celeste was about to sink.`,
+        questions: [
+          {
+            id: 25,
+            text: "What was the main reason the crew of the Dei Gratia decided to take 
+the Mary Celeste to Gibraltar?",
+            options: [
+              "They wanted to deliver the cargo of alcohol to Italy on behalf of the missing 
+crew.",
+              "They were concerned that the ship would sink if it was left drifting in the 
+ocean.",
+              "They expected to receive money for saving the abandoned ship.",
+              "They needed to report the crime to the British authorities stationed there."
+            ],
+            answer: 3,
+            explanation: "Para 1 states: 'Driven by the prospect of earning a substantial 
+payment for recovering the lost vessel...' -> Matches 'expected to receive money'."
+          },
+          {
+            id: 26,
+            text: "Why does the author argue against the theory that pirates were 
+responsible?",
+            options: [
+              "The type of cargo on the ship was not something pirates would be 
+interested in stealing.",
+              "The area where the ship was found was well-guarded by naval forces.",
+              "There was clear evidence of an explosion, which pirates would not have 
+caused.",
+              "The crew's personal belongings were missing, but the cargo remained on 
+the ship."
+            ],
+            answer: 2,
+            explanation: "Para 2 states: 'doubtful because the British navy was active in 
+that region, making it a poor location for such criminal activities.' -> Matches 
+'well-guarded by naval forces'."
+          },
+          {
+            id: 27,
+            text: "According to Anne MacGregor’s investigation, what led to the captain's 
+decision to abandon the ship?",
+            options: [
+              "A fire caused by leaking alcohol fumes made him believe the ship would 
+explode.",
+              "He mistakenly believed the ship was close to Italy and decided to row the 
+rest of the way.",
+              "Equipment failures made him uncertain about the ship's safety and 
+position.",
+              "The ship had taken on so much water that it was impossible to save it."
+            ],
+            answer: 3,
+            explanation: "Para 3 states: 'chronometer... was broken... pump... clogged... 
+unable to determine his exact location or tell how much water... panic' -> Matches 
+'Equipment failures made him uncertain'."
+          }
+        ]
+      },
+      analysis: {
+        intent: (
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 border-b pb-2 mb-2">作
+成意図：Pattern A-02 (歴史ミステリー解明)</h3>
+              <p className="text-gray-700 leading-relaxed">
+                このオリジナル問題「The Atlantic Enigma」は、2025年第1回の「The Mary 
+Celeste」と同じ<span className="font-bold text-blue-700">「歴史的ミステリーの科
+学的解明」</span>のテンプレートに基づいて作成されました。
+              </p>
+            </div>
+            <div>
+               <h4 className="font-bold text-gray-800 mb-1">構成の論理</h4>
+               <ul className="list-disc pl-5 space-y-1 text-gray-700">
+                 <li><span className="font-semibold">Para 1 (Discovery):</span> 発
+見と状況。動機（金銭）の提示。</li>
+                 <li><span className="font-semibold">Para 2 (Hypotheses):</span> 
+過去の説（海賊、爆発）とその論理的否定。</li>
+                 <li><span className="font-semibold">Para 3 (Solution):</span> 現代
+の調査による新事実（計器故障）と結論（パニックによる誤判断）。</li>
+               </ul>
+            </div>
+          </div>
+        ),
+        comparisonData: [
+          { label: "語数", past: "約 370 words", original: "約 380 words" },
+          { label: "パラグラフ", past: "3段落", original: "3段落" },
+          { label: "動機 (Q25)", past: "Make money", original: "Receive money" },
+          { label: "否定根拠 (Q26)", past: "Navy patrol", original: "Naval forces" },
+          { label: "結論 (Q27)", past: "Faulty equipment", original: "Equipment 
+failures" }
+        ],
+        comparisonNotes: (
+          <div className="space-y-2">
+            <h4 className="font-bold text-blue-900">パラフレーズ（言い換え）の妙
+</h4>
+            <p className="text-blue-800 leading-relaxed">
+              オリジナル問題では、元問題の正解選択肢に使われていた表現をさらに別
+の角度から言い換えています。
+              例えば、元問題の「deciding he had no choice but to get his crew off」とい
+う結論を、オリジナルでは<span className="font-bold bg-blue-100 px-1 rounded">
+「Equipment failures made him uncertain about the ship's safety」</span>と、原因（機
+器故障）に焦点を当てた選択肢として設計しました。
+            </p>
+          </div>
+        ),
+        syntaxPoints: [
+          {
+            id: 1,
+            title: "分詞構文 (理由・動機)",
+            sentence: `**Hoping to gain a financial reward for salvaging the deserted 
+ship**, the Dei Gratia’s crew sailed the Mary Celeste to Gibraltar.`,
+            explanation: `文頭の現在分詞 "Hoping..." は、主語である乗組員（crew）の
+動作の理由を表しています。「?することを期待して、彼らは...した」と訳します。`
+          },
+          {
+            id: 2,
+            title: "無生物主語 + 結果 (making it...)",
+            sentence: `...the British navy was active in that region, **making it a poor 
+location for such criminal activities**.`,
+            explanation: `カンマ以下の分詞構文 "making it..." は、前の文（海軍が活動
+していたこと）の結果を表します。`
+          },
+          {
+            id: 3,
+            title: "複雑な因果関係 (S cause O to do)",
+            sentence: `MacGregor argues that these technical failures, likely worsened by 
+a storm, **caused the captain to panic and order** his crew to leave...`,
+            explanation: `主語は "these technical failures"、動詞は "caused"、目的語は 
+"the captain" です。「技術的な故障が、船長をパニックにさせ、命令を出させる原因と
+なった」という、無生物主語による因果関係の表現です。`
+          }
+        ]
+      }
+    },
+    '2024-3': {
+      title: "2024年度 第3回 準1級",
+      theme: "Biography / Failure & Pivot (Pattern A-03)",
+      past: {
+        title: "From Spongy Moths to Astronomy",
+        text: `Leopold Trouvelot is a name that provokes mixed reactions in the United 
+States. He was a French artist and amateur entomologist who inadvertently caused an 
+environmental disaster. In the 1860s, Trouvelot was living in Massachusetts and 
+attempting to crossbreed spongy moths (then known as gypsy moths) with 
+silk-producing moths to create a disease-resistant species for the silk industry. However, 
+some of these spongy moths escaped from his home laboratory. Despite his warnings to 
+local officials, no action was taken. The moths multiplied rapidly, becoming a 
+devastating invasive species that stripped trees of their leaves and caused widespread 
+damage to forests across the eastern US.
+
+Following this failure, Trouvelot turned his attention to a completely different field: 
+astronomy. His interest was sparked when he witnessed several auroras. He began 
+creating detailed drawings of celestial phenomena, such as sunspots and planets, as seen 
+through his telescope. His artistic talent allowed him to capture details that photography 
+of the time could not. His work was so impressive that he was invited to join the staff at 
+the Harvard College Observatory. There, he produced thousands of illustrations that 
+were praised for their scientific accuracy and artistic beauty.
+
+Ironically, the technology that helped validate Trouvelot's work eventually made it 
+obsolete. Modern astrophotography technology, which allows astronomers to take 
+high-quality photographs with telescopes, has revealed the astounding accuracy of his 
+drawings. However, it was the same astrophotography that made his drawings 
+unnecessary for scientific study. Today, while his contribution to astronomy is 
+recognized, he is perhaps best remembered for the accidental introduction of the spongy 
+moth, a mistake that continues to plague the American environment.`,
+        structureJp: `この文章は、レオポルド・トルーヴロという人物の「失敗」と「転
+身」、そして「皮肉な結末」を描いた伝記的エピソードです。
+
+【第1段落：失敗と環境被害】
+フランス人のトルーヴロは、養蚕のためにマイマイガ（Spongy Moths）を品種改良し
+ようとしていたが、誤って逃がしてしまう。役所に警告したが無視され、結果として米
+国東部の森林に壊滅的な被害を与える外来種となってしまった。
+
+【第2段落：転身と成功】
+失敗の後、彼はオーロラを見たことをきっかけに天文学へ転身。望遠鏡で見た星を絵に
+描く才能が開花し、ハーバード大学天文台に雇われる。当時の写真技術では撮れない詳
+細を描き残し、高く評価された。
+
+【第3段落：皮肉な結末】
+現代の天体写真技術は、彼の絵がいかに正確だったかを証明した。しかし皮肉なことに、
+その写真技術の進化こそが、彼の手描きの絵を「科学的に不要」にしてしまった。彼の
+天文学への貢献は認められているが、マイマイガを広めた人物としての悪名も残ってい
+る。`,
+        questions: [
+          {
+            id: 25,
+            text: "What was the result of Trouvelot's experiments with moths?",
+            options: [
+              "He successfully created a new silk-producing species.",
+              "He proved that spongy moths were resistant to diseases.",
+              "He accidentally introduced a species that caused environmental damage.",
+              "He discovered a way to protect forests from invasive insects."
+            ],
+            answer: 3
+          },
+          {
+            id: 26,
+            text: "What led Trouvelot to pursue a career in astronomy?",
+            options: [
+              "He wanted to find a solution to the moth problem.",
+              "He was inspired by witnessing a rare natural phenomenon.",
+              "He was invited by Harvard University to teach art.",
+              "He developed a new type of telescope for photography."
+            ],
+            answer: 2
+          },
+          {
+            id: 27,
+            text: "What is ironic about Trouvelot's legacy in astronomy?",
+            options: [
+              "His drawings were more accurate than modern photographs.",
+              "The technology that proved his accuracy also made his work unnecessary.",
+              "He is remembered more for his art than for his scientific discoveries.",
+              "He never actually visited the observatory where he worked."
+            ],
+            answer: 2
+          }
+        ]
+      },
+      original: {
+        title: "The Glassmaker's Star",
+        text: `Elias Thorne was a man who dreamed of perfection but seemed destined 
+for failure. Born into a family of master glassblowers in 19th-century Venice, Elias 
+lacked the steady hand required to create the flawless, transparent glass that was highly 
+prized at the time. His creations were often marred by tiny air bubbles or strange 
+distortions that bent light in unpredictable ways. Dismissed by his father as incompetent, 
+Elias was eventually forced out of the family business. He left Venice in disgrace, 
+carrying with him a trunk full of his "failed" glass lenses, which he could not bring 
+himself to destroy.
+
+Wandering through Europe, Elias found himself in a small town in Germany, where he 
+met an elderly astronomer struggling with poor eyesight. The astronomer complained 
+that standard telescopes were too dim for his failing vision. On a whim, Elias offered one 
+of his distorted lenses. To their astonishment, the lens did not blur the stars but rather 
+separated their light into distinct bands of color. Elias’s "failure"?the specific curvature 
+caused by his unsteady hand?had accidentally created a primitive form of a 
+spectroscope, a device that allows scientists to analyze the composition of stars. Elias 
+was hailed as a genius in the scientific community, and his unique lenses became 
+essential tools for understanding the universe.
+
+However, the march of progress is often unkind to such singular talents. Decades later, 
+with the advent of precision engineering and digital sensors, the need for hand-blown 
+spectral lenses vanished. Computers could now analyze light with a precision that no 
+human hand, steady or not, could match. Ironically, modern digital analysis revealed that 
+Elias’s lenses had been flawed in exactly the right way to correct for certain atmospheric 
+distortions?a feat that modern engineering spends millions to replicate. Though his 
+craft is now obsolete, Elias’s accidental invention laid the groundwork for modern 
+astrophysics.`,
+        questions: [
+          {
+            id: 25,
+            text: "Why did Elias Thorne leave his family business in Venice?",
+            options: [
+              "He wanted to pursue a career as an astronomer in Germany.",
+              "He was unable to produce the high-quality glass expected of him.",
+              "He disagreed with his father about the future of glassblowing.",
+              "He invented a new type of glass that was rejected by his family."
+            ],
+            answer: 2,
+            explanation: "Para 1 states: 'lacked the steady hand... creations were often 
+marred... Dismissed by his father as incompetent.' -> Matches 'unable to produce 
+high-quality glass'."
+          },
+          {
+            id: 26,
+            text: "How did Elias's 'failed' lenses prove to be useful?",
+            options: [
+              "They magnified the stars more than any other telescope available.",
+              "They cured the elderly astronomer's failing eyesight.",
+              "They allowed starlight to be separated into colors for analysis.",
+              "They were used to create beautiful artistic patterns from sunlight."
+            ],
+            answer: 3,
+            explanation: "Para 2 states: 'separated their light into distinct bands of color... 
+created a primitive form of a spectroscope... analyze the composition of stars.' -> 
+Matches 'separated into colors for analysis'."
+          },
+          {
+            id: 27,
+            text: "What does the author suggest is ironic about Elias's lenses?",
+            options: [
+              "They were created by accident but were more precise than modern 
+computers.",
+              "They are now worth millions of dollars despite being made of cheap glass.",
+              "Digital analysis showed they were perfect for a purpose that is now handled 
+by machines.",
+              "The astronomer who used them never realized they were made by a 
+failure."
+            ],
+            answer: 3,
+            explanation: "Para 3 states: 'digital analysis revealed that Elias’s lenses had 
+been flawed in exactly the right way... Though his craft is now obsolete...' -> Matches 
+'showed they were perfect for a purpose... handled by machines'."
+          }
+        ]
+      },
+      analysis: {
+        intent: (
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 border-b pb-2 mb-2">作
+成意図：Pattern A-03 (失敗と転身)</h3>
+              <p className="text-gray-700 leading-relaxed">
+                このオリジナル問題「The Glassmaker's Star」は、2024年第3回の「From 
+Spongy Moths to Astronomy」と同じ<span className="font-bold text-blue-700">「失
+敗から偶然の成功、そして技術による淘汰」</span>のテンプレートに基づいて作成さ
+れました。
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-800 mb-1">1. 構成の完全模倣</h4>
+              <p className="text-gray-700 leading-relaxed">
+                元ネタ（マイマイガの失敗→天体画での成功→写真技術で不要に）の骨組
+みをそのまま使い、題材を「ガラス職人」に置き換えました。
+              </p>
+            </div>
+          </div>
+        ),
+        comparisonData: [
+          { label: "語数", past: "約 375 words", original: "約 385 words" },
+          { label: "文構造", past: "P1が長く、詳細な失敗描写", original: "P1で主人公の
+苦悩を詳細に描写" },
+          { label: "転機 (Q26)", past: "Natural phenomenon (Aurora)", original: "Chance 
+meeting (Astronomer)" },
+          { label: "皮肉 (Q27)", past: "Validation & Obsolescence", original: "Validation 
+& Obsolescence" }
+        ],
+        comparisonNotes: (
+          <div className="space-y-2">
+            <h4 className="font-bold text-blue-900">ストーリーテリングの再現
+</h4>
+            <p className="text-blue-800 leading-relaxed">
+              準1級の伝記パターンでは、単なる成功談ではなく<span 
+className="font-bold bg-blue-100 px-1 rounded">「意図せぬ結果 (Unintended 
+Consequences)」</span>や<span className="font-bold bg-blue-100 px-1 rounded">
+「時代の皮肉」</span>を描くのが特徴です。オリジナル問題でも、「手作業の不完全
+さが、逆に大気補正には最適だった」という高度な皮肉を盛り込み、読解の深さを担保
+しています。
+            </p>
+          </div>
+        ),
+        syntaxPoints: [
+          {
+            id: 1,
+            title: "分詞構文 (受動態・理由)",
+            sentence: `**Dismissed by his father as incompetent**, Elias was eventually 
+forced out of the family business.`,
+            explanation: `文頭の過去分詞 "Dismissed..." は、受動態の分詞構文です。
+「（父に無能だと）見放されたので」という理由を表しています。主語は直後の "Elias" 
+です。`
+          },
+          {
+            id: 2,
+            title: "関係代名詞による定義と同格",
+            sentence: `...a primitive form of a spectroscope, **a device that allows 
+scientists to analyze the composition of stars**.`,
+            explanation: `専門用語（spectroscope）の直後にカンマを置き、'a device that...' 
+と同格の名詞句でその定義を説明しています。英検の長文で頻出する「専門用語＋カン
+マ＋定義（関係代名詞）」の黄金パターンです。`
+          },
+          {
+            id: 3,
+            title: "ダッシュによる同格と関係詞",
+            sentence: `Ironically, modern digital analysis revealed that Elias’s lenses had 
+been flawed in exactly the right way to correct for certain atmospheric distortions**?a 
+feat that modern engineering spends millions to replicate**.`,
+            explanation: `ダッシュ（?）以下は、前の文の内容（欠陥が大気の歪みを補
+正していたこと）全体を 'a feat'（偉業）と言い換え、それを関係代名詞 'that' で修飾
+しています。「それは現代工学が巨額を投じて再現しようとしている偉業である」と評
+価を加えています。`
+          }
+        ]
+      }
+    },
+    '2024-2': {
+      title: "2024年度 第2回 準1級",
+      theme: "Social Controversy (Pattern C-01)",
+      past: {
+        title: "Measuring Intelligence",
+        text: `The first practical intelligence test was created in France in 1905 by Alfred 
+Binet. He designed it to help identify children who were struggling in school so they 
+could receive remedial help. This test, which later became known as the Binet-Simon 
+scale, provided the foundation for all IQ tests that have been produced since. For much 
+of the 20th century, these standardized tests were widely accepted as the primary 
+method for measuring human intellectual potential.
+
+However, in recent years, the validity of IQ tests has been increasingly questioned by 
+scientists. A major study led by Canadian researchers, which included over 100,000 
+participants, concluded that the concept of "intelligence" as a single entity is too simple. 
+The study found that cognitive ability is made up of at least three distinct components: 
+short-term memory, reasoning, and verbal ability. According to the researchers, a single 
+number derived from an IQ test cannot accurately capture the complex nature of the 
+human brain's capabilities. This finding supports the criticism that measuring 
+intelligence in isolation is a mistaken concept.
+
+Despite these scientific criticisms, IQ tests continue to have social utility, particularly in 
+the United States education system. In many school districts, admission to "gifted" 
+education programs is based on teacher referrals. Studies have shown that teachers' 
+subconscious biases can lead them to overlook talented students from ethnic minority 
+backgrounds. However, in districts where universal IQ screening has been implemented, 
+the number of minority students identified as gifted has significantly increased. In this 
+context, the objective measure of the test, flawed as it may be, has given students from 
+underrepresented groups a better chance of entering programs that can help them 
+succeed.`,
+        structureJp: `この文章は、IQテストの「起源」「科学的批判」、そして「社会的
+有用性」という3つの視点からなる論説文です。
+
+【第1段落：起源と普及】
+フランスのアルフレッド・ビネーが、学習に遅れのある子供を支援するために最初のテ
+ストを作成した。これが現代のIQテストの基礎（foundation）となり、長年、知能測
+定の標準的な手法として受け入れられてきた。
+
+【第2段落：科学的批判】
+カナダの大規模研究により、知能を「単一のもの（single entity）」と捉えるのは単純す
+ぎると批判された。知能は記憶・推論・言語能力などの複合体であり、1つの数字では
+表せない。「知能を単独で測定できる」という考えは誤り（mistaken concept）である
+とされる。
+
+【第3段落：社会的有用性（逆説的擁護）】
+科学的には不完全かもしれないが、米国の教育現場では役に立っている。教師の推薦だ
+けだと無意識のバイアスがかかり、マイノリティが見落とされがちだが、全員にIQテ
+ストを受けさせることで、才能あるマイノリティの子供が公平に選ばれるチャンスが増
+えた（better chance）。`,
+        questions: [
+          {
+            id: 25,
+            text: "What is true about the Binet-Simon scale?",
+            options: [
+              "It was originally designed to measure the intelligence of adults.",
+              "It became the basis for future intelligence tests.",
+              "It was rejected by most educators in the 20th century.",
+              "It proved that intelligence is a single, simple ability."
+            ],
+            answer: 2
+          },
+          {
+            id: 26,
+            text: "What did the Canadian study conclude about intelligence?",
+            options: [
+              "It is best measured by a single standardized test.",
+              "Short-term memory is the most important component.",
+              "The idea that it is a single ability is a mistaken concept.",
+              "Online tests are more accurate than traditional ones."
+            ],
+            answer: 3
+          },
+          {
+            id: 27,
+            text: "How have IQ tests affected minority students in some US school 
+districts?",
+            options: [
+              "They have been used to exclude minorities from gifted programs.",
+              "They have confirmed teachers' biases against minority students.",
+              "They have proven that minority students score lower on average.",
+              "They have given them a better chance of entering gifted programs."
+            ],
+            answer: 4
+          }
+        ]
+      },
+      original: {
+        title: "The Truth Machine?",
+        text: `The polygraph, commonly known as the lie detector, was invented in the 
+early 20th century and quickly became a staple of law enforcement. The device operates 
+on the principle that deception induces physiological stress. When a subject is asked 
+questions, the machine measures changes in their heart rate, blood pressure, respiration, 
+and skin conductivity (sweating). For decades, police departments and government 
+agencies have relied on these measurements, operating under the assumption that a 
+specific set of physiological responses can reliably distinguish truth from falsehood.
+
+However, the scientific validity of the polygraph has been widely questioned by experts. 
+The fundamental problem is that the machine measures arousal?anxiety or fear?rather 
+than "lying" itself. An innocent person who is terrified of being falsely accused may show 
+the same physical signs of stress as a guilty person attempting to deceive. Conversely, a 
+skilled liar or someone lacking a conscience may remain calm, thereby passing the test. 
+A comprehensive review by the National Academy of Sciences concluded that the 
+evidence for polygraph validity is weak, arguing that relying on such a flawed tool for 
+security screening is scientifically unjustifiable.
+
+Despite the lack of scientific support, the polygraph continues to be used by many 
+agencies. The reason for its persistence lies not in its accuracy as a detector, but in its 
+utility as an interrogation tool. The mere presence of the machine often induces a 
+psychological effect known as the "bogus pipeline." When suspects believe that the 
+machine can detect their lies, they are far more likely to confess voluntarily. In this sense, 
+the polygraph serves a functional social purpose: it acts as a prop that encourages 
+honesty, even if the science behind the "detection" is largely an illusion.`,
+        questions: [
+          {
+            id: 25,
+            text: "What is the underlying assumption behind the use of the polygraph?",
+            options: [
+              "Liars will always confess when confronted with evidence.",
+              "Physiological changes in the body indicate that a person is lying.",
+              "Criminals have a unique heart rate pattern that can be identified.",
+              "It is impossible for a human to control their sweating."
+            ],
+            answer: 2,
+            explanation: "Para 1 states: 'operates on the principle that deception induces 
+physiological stress... assumption that a specific set of physiological responses can 
+reliably distinguish truth from falsehood.' -> Matches 'Physiological changes... indicate... 
+lying'."
+          },
+          {
+            id: 26,
+            text: "Why do scientists criticize the validity of the polygraph?",
+            options: [
+              "It is too expensive for most police departments to use.",
+              "It measures emotional arousal rather than the act of lying itself.",
+              "It has been proven that lying does not cause any physical changes.",
+              "The machine often breaks down during important interrogations."
+            ],
+            answer: 2,
+            explanation: "Para 2 states: 'machine measures arousal?anxiety or 
+fear?rather than lying itself. An innocent person... may show the same physical signs.' 
+-> Matches 'measures emotional arousal rather than... lying'."
+          },
+          {
+            id: 27,
+            text: "Why do agencies continue to use the polygraph despite its flaws?",
+            options: [
+              "They are unaware of the scientific studies proving it is ineffective.",
+              "It is required by law in all criminal investigations.",
+              "The belief that it works encourages suspects to tell the truth.",
+              "It is the only way to scientifically prove someone is guilty."
+            ],
+            answer: 3,
+            explanation: "Para 3 states: 'utility as an interrogation tool... When suspects 
+believe that the machine can detect their lies, they are far more likely to confess 
+voluntarily.' -> Matches 'belief that it works encourages suspects to tell the truth'."
+          }
+        ]
+      },
+      analysis: {
+        intent: (
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 border-b pb-2 mb-2">作
+成意図：Pattern C-01 (社会・論争)</h3>
+              <p className="text-gray-700 leading-relaxed">
+                このオリジナル問題「The Truth Machine?」は、2024年第2回の
+「Measuring Intelligence」と同じ<span className="font-bold text-blue-700">「科学
+的ツールの不完全さと、逆説的な社会的有用性」</span>のテンプレートに基づいて作
+成されました。
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-800 mb-1">1. テーマの選定</h4>
+              <p className="text-gray-700 leading-relaxed">
+                元ネタ（IQテスト）の構造を維持するため、「科学的には批判されている
+が、社会的には使われ続けている測定ツール」として<span className="font-bold">「嘘
+発見器（Polygraph）」</span>を選びました。
+              </p>
+            </div>
+          </div>
+        ),
+        comparisonData: [
+          { label: "テーマ", past: "IQ Tests", original: "Polygraph (Lie Detector)" },
+          { label: "第1段落", past: "Foundation & Spread", original: "Principle & Standard 
+Use" },
+          { label: "第2段落", past: "Criticism (Complexity)", original: "Criticism 
+(Validity/Anxiety)" },
+          { label: "第3段落", past: "Utility (Objective Measure)", original: "Utility 
+(Psychological Prop)" },
+          { label: "結論", past: "Helps Minorities", original: "Induces Confessions" }
+        ],
+        comparisonNotes: (
+          <div className="space-y-2">
+            <h4 className="font-bold text-blue-900">「欠陥あるツールの擁護」という
+論理</h4>
+            <p className="text-blue-800 leading-relaxed">
+              準1級の論説文で頻出する<span className="font-bold bg-blue-100 px-1 
+rounded">「科学的正しさ vs 社会的実用性」</span>の対比を完璧に再現しました。
+              「IQテストはバイアス排除に役立つ」「嘘発見器は自白誘導に役立つ」と
+いう、<span className="underline decoration-blue-400">直感とは異なる視点
+（Counter-intuitive perspective）</span>を提示することで、読解の難易度を調整して
+います。
+            </p>
+          </div>
+        ),
+        syntaxPoints: [
+          {
+            id: 1,
+            title: "同格の that",
+            sentence: `...operating under **the assumption that a specific set of 
+physiological responses can reliably distinguish truth from falsehood**.`,
+            explanation: `'the assumption'（仮定）の内容を、that以下の完全な文で説明
+しています。「～という仮定」と訳します。抽象名詞（fact, belief, ideaなど）の後によ
+く使われ、関係代名詞と違ってthat節内で文要素が完結しているのが特徴です。`
+          },
+          {
+            id: 2,
+            title: "長い主語と関係代名詞",
+            sentence: `**An innocent person who is terrified of being falsely accused** 
+may show the same physical signs of stress as a guilty person attempting to deceive.`,
+            explanation: `'An innocent person' を関係代名詞 'who' 以下の節が修飾して
+おり、動詞 'may show' までの主語が長くなっています。「誤って告発されることを恐れ
+ている無実の人は」と主語を塊として捉え、文末の 'as' 以下との比較構造（the same ... 
+as）を見抜くことが重要です。`
+          },
+          {
+            id: 3,
+            title: "not A, but B (前置詞句)",
+            sentence: `The reason for its persistence **lies not in its accuracy as a 
+detector, but in its utility as an interrogation tool**.`,
+            explanation: `動詞 'lies'（ある、存在する）の場所を示す前置詞句 'in...' を
+対比させています。「その存続の理由は、探知機としての正確さにあるのではなく、尋
+問の道具としての有用性にある」という論理の核となる文です。`
+          }
+        ]
+      }
+    },
+    '2024-1': {
+      title: "2024年度 第1回 準1級",
+      theme: "Nature / Myth-Busting (Pattern B-01)",
+      past: {
+        title: "Wolf Packs",
+        text: `For many years, the popular image of a wolf pack has been one of constant 
+savage competition. It was believed that the pack was ruled by a dominant "alpha male" 
+who fought his way to the top and maintained his position through aggression. This 
+concept, however, was largely based on studies of wolves in captivity. In zoos, unrelated 
+wolves were often forced to live together in small spaces, leading to unnatural tension 
+and power struggles that do not reflect their behavior in the wild.
+
+In their natural habitat, a wolf pack functions more like a human family. It typically 
+consists of a breeding pair?the parents?and their offspring of various ages. The 
+"leaders" are simply the parents, and they guide the group not through tyranny but 
+through experience. Violence within the pack is extremely rare. Instead, the social order 
+is maintained through subtle communication and cooperation, ensuring the survival of 
+the younger members.
+
+Recent research has added a fascinating twist to our understanding of wolf behavior, 
+specifically regarding why some wolves choose to leave their pack. A study published in 
+2022 found a link between a specific parasite, Toxoplasma gondii, and wolf behavior. 
+Wolves infected with this parasite were found to be far more likely to take risks and leave 
+their families to start new packs. This suggests that a biological factor, rather than just 
+social pressure or instinct, may drive the expansion of wolf populations.`,
+        structureJp: `この文章は、オオカミの群れ（Wolf Packs）に関する「通説」を科
+学的に否定し、最新の研究成果を紹介する説明文です。
+
+【第1段落：通説とその起源】
+長年、オオカミの群れは「アルファ・オス」が暴力で支配する競争社会だと思われてき
+た。しかし、この概念は動物園などの「飼育下（captivity）」での観察に基づいた誤解
+だった。
+
+【第2段落：野生での真実】
+野生の群れは「家族（family）」に近い。リーダーは単なる親であり、暴力ではなく経
+験によって群れを導く。社会秩序はコミュニケーションと協力によって維持されている。
+
+【第3段落：最新の発見】
+なぜオオカミが群れを離れるのかに関する2022年の研究。寄生虫（トキソプラズマ）
+に感染した個体はリスクを恐れなくなり、群れを離れて新しい群れを作る傾向が高いこ
+とが判明した。行動の背後に生物学的要因（biological factor）があることが示唆された。
+`,
+        questions: [
+          {
+            id: 25,
+            text: "Why is the concept of the 'alpha male' considered inaccurate for wild 
+wolves?",
+            options: [
+              "It was based on observations of wolves in zoos, not in the wild.",
+              "Wild wolves are naturally more aggressive than captive ones.",
+              "The alpha male is usually the youngest member of the pack.",
+              "Scientists have never actually observed wolves fighting."
+            ],
+            answer: 1
+          },
+          {
+            id: 26,
+            text: "How do wild wolf packs typically operate?",
+            options: [
+              "They are ruled by the strongest wolf who defeats all others.",
+              "They function like a family unit led by parents.",
+              "They frequently engage in violent conflicts to determine rank.",
+              "They have no clear leaders and act independently."
+            ],
+            answer: 2
+          },
+          {
+            id: 27,
+            text: "What did recent research discover about wolves leaving their packs?",
+            options: [
+              "They leave because they are forced out by the alpha male.",
+              "They leave when food becomes scarce in their territory.",
+              "Their behavior is influenced by an infection from another organism.",
+              "They are less likely to survive if they leave their families."
+            ],
+            answer: 3
+          }
+        ]
+      },
+      original: {
+        title: "The Truth About Piranhas",
+        text: `To most people, the word "piranha" conjures up a terrifying image of a 
+swarm of bloodthirsty fish stripping a large animal to the bone in seconds. This 
+reputation as a "man-eater" was largely solidified by former U.S. President Theodore 
+Roosevelt. In 1913, he visited the Amazon and witnessed a spectacle where piranhas 
+devoured a cow. However, what he did not know was that the locals had deliberately 
+starved the fish for days and blocked off a section of the river to stage the event for him. 
+This artificial setup created a lasting, but misleading, legend.
+
+In reality, piranhas are far less aggressive than their reputation suggests. While they do 
+have sharp teeth, most species are omnivorous scavengers that feed on seeds, insects, 
+and other fish. Research has shown that piranhas travel in large groups, or schools, not 
+to hunt cooperatively, but for their own protection. They are actually quite nervous 
+creatures and are preyed upon by cormorants, caimans, and dolphins. The large 
+numbers allow them to survive in a river filled with predators larger than themselves.
+
+That is not to say piranhas are harmless, but their aggression is usually tied to specific 
+environmental conditions. During the dry season, when water levels drop and food 
+becomes scarce, they can become dangerous out of desperation. Furthermore, scientists 
+have discovered that piranhas are vocal creatures. They produce "barking" sounds to 
+communicate warnings to one another. This acoustic signaling is often used to avoid 
+physical confrontations, suggesting that they prefer to resolve conflicts without resorting 
+to the violence they are famous for.`,
+        questions: [
+          {
+            id: 25,
+            text: "What contributed to the piranha's reputation as a dangerous 
+man-eater?",
+            options: [
+              "A scientific report published by Theodore Roosevelt.",
+              "A staged event where starved fish attacked a cow.",
+              "Numerous accounts of attacks on local swimmers.",
+              "The natural behavior of piranhas in the wild."
+            ],
+            answer: 2,
+            explanation: "Para 1 states: 'witnessed a spectacle... locals had deliberately 
+starved the fish... staged the event... created a lasting, but misleading, legend.' -> 
+Matches 'staged event'."
+          },
+          {
+            id: 26,
+            text: "Why do piranhas travel in large groups?",
+            options: [
+              "To hunt down large prey more effectively.",
+              "To protect themselves from other predators.",
+              "To find mates during the breeding season.",
+              "To keep the water temperature stable."
+            ],
+            answer: 2,
+            explanation: "Para 2 states: 'travel in large groups... not to hunt cooperatively, 
+but for their own protection. They are actually quite nervous... preyed upon by...' -> 
+Matches 'protect themselves'."
+          },
+          {
+            id: 27,
+            text: "What does recent research regarding piranha communication suggest?",
+            options: [
+              "They make sounds to attract prey in muddy water.",
+              "They bark to signal the start of a feeding frenzy.",
+              "They use sound to avoid fighting with each other.",
+              "They communicate to coordinate attacks on larger animals."
+            ],
+            answer: 3,
+            explanation: "Para 3 states: 'produce barking sounds... used to avoid physical 
+confrontations... prefer to resolve conflicts without resorting to violence.' -> Matches 
+'use sound to avoid fighting'."
+          }
+        ]
+      },
+      analysis: {
+        intent: (
+          <div className="space-y-4">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 border-b pb-2 mb-2">作
+成意図：Pattern B-01 (通説修正)</h3>
+              <p className="text-gray-700 leading-relaxed">
+                このオリジナル問題「The Truth About Piranhas」は、2024年第1回の
+「Wolf Packs」と同じ<span className="font-bold text-blue-700">「恐ろしいイメージ
+（神話）の科学的修正」</span>のテンプレートに基づいて作成されました。
+              </p>
+            </div>
+            <div>
+              <h4 className="font-bold text-gray-800 mb-1">1. テーマの選定</h4>
+              <p className="text-gray-700 leading-relaxed">
+                オオカミの「凶暴なリーダー」という誤解に対し、ピラニアの「凶暴な人
+食い魚」という誤解を対比させました。どちらも<span className="font-bold">「実は
+臆病で、群れは防御のため」</span>という共通の真実を持っています。
+              </p>
+            </div>
+          </div>
+        ),
+        comparisonData: [
+          { label: "テーマ", past: "Wolf Packs (Alpha Myth)", original: "Piranhas (Killer 
+Myth)" },
+          { label: "誤解の源", past: "Captivity (Zoos)", original: "Staged Event 
+(Roosevelt)" },
+          { label: "真実", past: "Family unit / Cooperation", original: "Scavengers / 
+Protection" },
+          { label: "最新知見", past: "Parasite causes risk-taking", original: "Sound used to 
+avoid conflict" }
+        ],
+        comparisonNotes: (
+          <div className="space-y-2">
+            <h4 className="font-bold text-blue-900">「条件付き」の結論</h4>
+            <p className="text-blue-800 leading-relaxed">
+              第3パラグラフでは、単に「安全だ」と言い切るのではなく、<span 
+className="font-bold bg-blue-100 px-1 rounded">「特定の条件下（寄生虫感染 / 乾
+季・飢餓）では行動が変わる」</span>という、科学的でバランスの取れた視点を提示
+しています。これは準1級の長文で非常に重要な「Critical Thinking（批判的思考）」の
+要素です。
+            </p>
+          </div>
+        ),
+        syntaxPoints: [
+          {
+            id: 1,
+            title: "関係代名詞 what (名詞節)",
+            sentence: `However, **what he did not know** was that the locals had 
+deliberately starved the fish for days...`,
+            explanation: `'what he did not know'（彼が知らなかったこと）が文の主語に
+なっています。また、be動詞 'was' の後ろの 'that' は補語となる名詞節を導いていま
+す。「彼が知らなかったのは、～ということだった」という構造です。`
+          },
+          {
+            id: 2,
+            title: "目的の対比 (not... but...)",
+            sentence: `...piranhas travel in large groups, or schools, **not to hunt 
+cooperatively, but for their own protection**.`,
+            explanation: `「協調して狩りをするためではなく、自分たちの身を守るため
+に」群れで行動する、という対比です。'to hunt'（不定詞）と 'for protection'（前置詞
+句）という異なる形ですが、機能的に対比されています。`
+          },
+          {
+            id: 3,
+            title: "分詞構文 (結果・示唆)",
+            sentence: `This acoustic signaling is often used to avoid physical 
+confrontations, **suggesting that they prefer to resolve conflicts without resorting to 
+violence**...`,
+            explanation: `文末の 'suggesting that...' は、前の文の内容（鳴き声で衝突を
+避けること）が何を意味するかを説明しています。「（その事実は）彼らが暴力に訴える
+ことなく争いを解決することを好むと示唆している」となります。`
+          }
+        ]
+      }
+    },
+    '2023-3-1': {
+      title: "2023年度 第3回 (1)",
+      theme: "History / Narrative (Pattern A-04)",
+      past: {
+        title: "A Daring Escape",
+        text: `The American Civil War was a time of great turmoil, but for some, it 
+presented a unique opportunity for liberation. Robert Smalls was born into slavery in 
+South Carolina in 1839. From a young age, he worked various jobs, eventually finding 
+employment on the Charleston docks. His intelligence and skill with boats led him to 
+become a pilot on a Confederate military transport ship called the Planter. Despite his 
+relatively privileged position compared to other enslaved people, Smalls lived in 
+constant fear. He knew that his owner could sell him or his family members at any time, 
+separating them forever. This fear of permanent separation became the driving force 
+behind his audacious plan to escape.
+
+In May 1862, an unexpected opportunity arose. The three white officers in charge of the 
+Planter decided to spend the night ashore, leaving the ship under the care of the 
+enslaved crew. This was a violation of military regulations, but it gave Smalls the chance 
+he had been waiting for. Under the cover of darkness, he and the other crew members 
+brought their families on board. Smalls donned the captain's straw hat and uniform to 
+disguise himself. He knew that the ship would have to pass several Confederate 
+checkpoints before reaching the safety of the Union naval blockade.
+
+Navigating the ship required nerves of steel. Smalls guided the Planter past the heavily 
+guarded forts in Charleston Harbor. At each checkpoint, he gave the correct steam 
+whistle signals, mimicking the captain's mannerisms to avoid suspicion in the dark. As 
+they approached the final fort, the risk of discovery was at its highest, but the disguise 
+held. Once they were out of range of the Confederate guns, Smalls lowered the 
+Confederate flag and raised a white bedsheet as a sign of surrender. He sailed the ship 
+directly to the Union fleet, delivering not only the Planter and its cargo of weapons but 
+also crucial intelligence. His daring act secured freedom for himself and his family, and 
+he went on to serve in the Union Navy and later the U.S. Congress.`,
+        structureJp: `この文章は、南北戦争中に奴隷のロバート・スモールズが南軍の船
+を奪って脱出した実話を描
+
